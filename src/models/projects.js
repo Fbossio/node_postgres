@@ -27,7 +27,11 @@ const Project = sequelize.define(
   }
 );
 
-Project.hasMany(Task, { foreignKey: "projectid", sourceKey: "id" });
+Project.hasMany(Task, {
+  foreignKey: "projectid",
+  onDelete: "cascade",
+  sourceKey: "id",
+});
 Task.belongsTo(Project, { foreignKey: "projectid", sourceKey: "id" });
 
 export default Project;
